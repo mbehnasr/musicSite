@@ -6,16 +6,20 @@ from django.template import loader
 
 from django.http import HttpResponse
 from django.template import loader
-
+from django.shortcuts import loader
 
 def index(request):
     all_album = Album.objects.all()
-    template = loader.get_template('music/index.html')
-    context = {
-        'all_album' :all_album ,
-    }
-    return HttpResponse(template.render(context, request))
+    # # template = loader.get_template('music/index.html')
+    # context = {
+    #     'all_album' :all_album ,
+    # }
 
+    context = {'all_album' :all_album }
+
+
+    # return HttpResponse(template.render(context, request))
+    return  render(request , 'music/index.html', context)
 
     # html = ''
     #
